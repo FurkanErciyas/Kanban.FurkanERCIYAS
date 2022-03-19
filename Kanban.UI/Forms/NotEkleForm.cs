@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kanban.DATA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,67 @@ namespace Kanban.UI.Forms
 {
     public partial class NotEkleForm : Form
     {
-        public NotEkleForm()
+        private readonly KanbanProje _kanbanProje;
+        private readonly KanbanVeri _kanbanVeri;
+
+        public NotEkleForm(KanbanProje kanbanProje, KanbanVeri kanbanVeri)
         {
             InitializeComponent();
+            _kanbanProje = kanbanProje;
+            _kanbanVeri = kanbanVeri;
+            KategorileriDoldur();
+            lblKarakterSayisi.BackColor = Color.LightGreen;
+            txtOlusturulmaZamaniOnIzleme.Text = DateTime.Now.ToShortDateString() + " - " + DateTime.Now.ToShortTimeString();
+        }
+        private void KategorileriDoldur()
+        {
+            cboKategori.Items.Clear();
+            cboKategori.DataSource = _kanbanVeri.Kategoriler;
+        }
+
+        private void cboKategori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Kategori seciliKategori = (Kategori)cboKategori.SelectedItem;
+            grpOnIzleme.BackColor = seciliKategori.Renk;
+            txtKategoriOnIzleme.Text = seciliKategori.Ad;
+        }
+
+        private void txtAciklama_TextChanged(object sender, EventArgs e)
+        {
+            int karakterSayisi = txtAciklama.Text.Length;
+            if (karakterSayisi < 140)
+            {
+                lblKarakterSayisi.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                lblKarakterSayisi.BackColor = Color.Red;
+            }
+            lblKarakterSayisi.Text = "Karakter Sayısı: " + (140 - karakterSayisi).ToString();
+            txtAciklamaOnIzleme.Text = txtAciklama.Text;
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAciklama.Text))
+            {
+                Not not = new Not()
+                {
+                    Kategori = (Kategori)cboKategori.SelectedItem,
+                    Aciklama = txtAciklama.Text,
+                };
+                _kanbanProje.Notlar.Add(not);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen Bir Açıklama Giriniz..!");
+                return;
+            }
         }
     }
 }
+
+
+
+

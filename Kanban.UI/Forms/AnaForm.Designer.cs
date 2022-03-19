@@ -61,6 +61,7 @@
             this.tsmiProjeler.Name = "tsmiProjeler";
             this.tsmiProjeler.Size = new System.Drawing.Size(76, 25);
             this.tsmiProjeler.Text = "Projeler";
+            this.tsmiProjeler.Click += new System.EventHandler(this.tsmiProjeler_Click);
             // 
             // tsmiKategoriEkle
             // 

@@ -28,8 +28,8 @@ namespace Kanban.UI.Forms
             {
                 kanbanVeri = new KanbanVeri();
             }
+            ProjeleriListele();
         }
-                
 
         private void tsmiKategoriEkle_Click(object sender, EventArgs e)
         {
@@ -48,12 +48,44 @@ namespace Kanban.UI.Forms
             KanbanProje kanbanProje = new KanbanProje();
             ProjeEkleForm projeEkleForm = new ProjeEkleForm(kanbanProje);
             projeEkleForm.ShowDialog();
-            kanbanVeri.Projeler.Add(kanbanProje);
-            ProjeForm projeForm = new ProjeForm(kanbanProje, kanbanVeri);
-            projeForm.MdiParent = this;
-            projeForm.Show();
 
+            if (kanbanProje.Ad != null)
+            {
+                kanbanVeri.Projeler.Add(kanbanProje);
+                ProjeForm projeForm = new ProjeForm(kanbanProje, kanbanVeri);
+                projeForm.MdiParent = this;
+                projeForm.Show();
+            }
+            ProjeleriListele();
+        }
 
+        private void tsmiProjeler_Click(object sender, EventArgs e)
+        {
+            ProjeleriListele();
+        }
+
+        public void ProjeleriListele()
+        {
+            foreach (var item in this.MdiChildren)
+            {
+                item.Dispose();
+                item.Close();
+            }
+            foreach (var item in kanbanVeri.Projeler)
+            {
+                ProjeForm projeForm = new ProjeForm(item, kanbanVeri);
+                projeForm.ProjeSilindiginde += ProjeForm_ProjeSilindiginde;
+                projeForm.MdiParent = this;
+                projeForm.Show();
+            }
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void ProjeForm_ProjeSilindiginde(KanbanProje kanbanProje)
+        {
+            kanbanVeri.Projeler.Remove(kanbanProje);
+            ProjeleriListele();
         }
     }
 }
+

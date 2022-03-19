@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanban.DATA", "Kanban.DATA\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4A10223-D757-44E5-999B-BA6FC21CBD12}"
 	ProjectSection(SolutionItems) = preProject
-		Siniflar.md = Siniflar.md
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Global

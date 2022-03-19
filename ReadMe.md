@@ -1,9 +1,9 @@
 #### SINIF
 ***
 - [X] DurumEnum (enum)
-    - Todo (Yapilacaklar)
-    - Doing (Yapýlýyor)
-    - Done (Tamamlananlar)
+    - ToDo
+    - Doing
+    - Done
 - [X] Kategori (class)
     - Id, Guid
     - Ad, string
@@ -55,9 +55,21 @@
 
 ##### ProjeEkleForm
 - [X] AnaForm üzerinden 'Proje Ekle' týklandýðý zaman ProjeEkleForm açýlmasý.
-- [X] ProjeEkleForm üzerinden 'Ekle' butonuna týklanýldýðý zaman ProjeForm açýlmasý (mdi)
+- [X] ProjeEkleForm üzerinden 'Ekle' butonuna týklanýldýðý zaman Projenin Kaydedilmesi.
 
 ##### ProjeForm
-- [ ] Panellerde ToDo, Doing, Done yazýlarýnýn DurumEnum üzerinden aktarýlmasý.
-- [ ] ProjeForm üzerinden (ToDo, Doing, Done) panelerinin pencere büyüklüðüne göre ayarý.
+- [X] ProjeForm üzerinden (ToDo, Doing, Done) panelerinin pencere büyüklüðüne göre ayarý. (TableLayoutPanel kullanýldý)
+- [X] ProjeForm üzerinden Proje Sil týklanýldýðý zaman kayýtlý verilerden projenin silinmesi.
+- [X] ProjeForm'da Not Ekle týklanýldýðý zaman NotEkleForm'un açýlmasý.
+
+##### NotEkleForm
+- [X] Kategoriler listesinden kayýtlý kategorilerin combobox'ta listelenmesi.
+- [X] Seçili Kategorinin Ön izlemede renginin ve kategori adýnýn aktarýlmasý.
+- [X] Açýklama max 140 karakter ayarlanmasý.
+- [X] Açýklama yazýldýðýnda ön izlemede gösterilmesi. (anlýk)
+- [X] Oluþturulan notun tarih ve saatinin ön izlemede gösterilmesi.
+- [ ] Ekle butonuna týlanýldýðý zaman ön izlemede bulunan notun görsel olarak ilgili projenin ToDo paneline aktarýlmasý.
+
+##### AnaForm
+- [X] AnaForm'da Projelere týklandýðý zaman kayýtlý projelerin açýlmasý. (MdiLayout TileVertical)
 

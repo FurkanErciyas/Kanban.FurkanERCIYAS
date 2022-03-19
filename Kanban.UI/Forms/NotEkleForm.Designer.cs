@@ -33,13 +33,14 @@
             this.txtAciklama = new System.Windows.Forms.TextBox();
             this.btnEkle = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.grpOnIzleme = new System.Windows.Forms.Panel();
             this.txtAciklamaOnIzleme = new System.Windows.Forms.TextBox();
             this.txtOlusturulmaZamaniOnIzleme = new System.Windows.Forms.TextBox();
             this.txtKategoriOnIzleme = new System.Windows.Forms.TextBox();
             this.lblKarakterSayisi = new System.Windows.Forms.Label();
+            this.btnSil = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.grpOnIzleme.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -53,20 +54,24 @@
             // 
             // cboKategori
             // 
+            this.cboKategori.DisplayMember = "Ad";
             this.cboKategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboKategori.FormattingEnabled = true;
             this.cboKategori.Location = new System.Drawing.Point(94, 17);
             this.cboKategori.Name = "cboKategori";
             this.cboKategori.Size = new System.Drawing.Size(187, 32);
             this.cboKategori.TabIndex = 1;
+            this.cboKategori.SelectedIndexChanged += new System.EventHandler(this.cboKategori_SelectedIndexChanged);
             // 
             // txtAciklama
             // 
             this.txtAciklama.Location = new System.Drawing.Point(16, 55);
+            this.txtAciklama.MaxLength = 140;
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
             this.txtAciklama.Size = new System.Drawing.Size(265, 206);
             this.txtAciklama.TabIndex = 2;
+            this.txtAciklama.TextChanged += new System.EventHandler(this.txtAciklama_TextChanged);
             // 
             // btnEkle
             // 
@@ -76,10 +81,11 @@
             this.btnEkle.TabIndex = 3;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.grpOnIzleme);
             this.groupBox1.Location = new System.Drawing.Point(287, 17);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(271, 287);
@@ -87,28 +93,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ön İzleme";
             // 
-            // panel1
+            // grpOnIzleme
             // 
-            this.panel1.Controls.Add(this.txtAciklamaOnIzleme);
-            this.panel1.Controls.Add(this.txtOlusturulmaZamaniOnIzleme);
-            this.panel1.Controls.Add(this.txtKategoriOnIzleme);
-            this.panel1.Location = new System.Drawing.Point(6, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(259, 206);
-            this.panel1.TabIndex = 0;
+            this.grpOnIzleme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grpOnIzleme.Controls.Add(this.btnSil);
+            this.grpOnIzleme.Controls.Add(this.txtAciklamaOnIzleme);
+            this.grpOnIzleme.Controls.Add(this.txtOlusturulmaZamaniOnIzleme);
+            this.grpOnIzleme.Controls.Add(this.txtKategoriOnIzleme);
+            this.grpOnIzleme.Location = new System.Drawing.Point(6, 38);
+            this.grpOnIzleme.Name = "grpOnIzleme";
+            this.grpOnIzleme.Size = new System.Drawing.Size(259, 243);
+            this.grpOnIzleme.TabIndex = 0;
             // 
             // txtAciklamaOnIzleme
             // 
+            this.txtAciklamaOnIzleme.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAciklamaOnIzleme.Location = new System.Drawing.Point(3, 38);
             this.txtAciklamaOnIzleme.Multiline = true;
             this.txtAciklamaOnIzleme.Name = "txtAciklamaOnIzleme";
             this.txtAciklamaOnIzleme.ReadOnly = true;
-            this.txtAciklamaOnIzleme.Size = new System.Drawing.Size(253, 130);
+            this.txtAciklamaOnIzleme.Size = new System.Drawing.Size(253, 167);
             this.txtAciklamaOnIzleme.TabIndex = 3;
             // 
             // txtOlusturulmaZamaniOnIzleme
             // 
-            this.txtOlusturulmaZamaniOnIzleme.Location = new System.Drawing.Point(3, 174);
+            this.txtOlusturulmaZamaniOnIzleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOlusturulmaZamaniOnIzleme.Enabled = false;
+            this.txtOlusturulmaZamaniOnIzleme.Location = new System.Drawing.Point(3, 211);
             this.txtOlusturulmaZamaniOnIzleme.Name = "txtOlusturulmaZamaniOnIzleme";
             this.txtOlusturulmaZamaniOnIzleme.ReadOnly = true;
             this.txtOlusturulmaZamaniOnIzleme.Size = new System.Drawing.Size(253, 29);
@@ -116,11 +130,15 @@
             // 
             // txtKategoriOnIzleme
             // 
+            this.txtKategoriOnIzleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtKategoriOnIzleme.Enabled = false;
             this.txtKategoriOnIzleme.Location = new System.Drawing.Point(3, 3);
             this.txtKategoriOnIzleme.Name = "txtKategoriOnIzleme";
             this.txtKategoriOnIzleme.ReadOnly = true;
             this.txtKategoriOnIzleme.Size = new System.Drawing.Size(253, 29);
             this.txtKategoriOnIzleme.TabIndex = 0;
+            this.txtKategoriOnIzleme.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblKarakterSayisi
             // 
@@ -131,6 +149,16 @@
             this.lblKarakterSayisi.Size = new System.Drawing.Size(135, 17);
             this.lblKarakterSayisi.TabIndex = 5;
             this.lblKarakterSayisi.Text = "Karakter Sayısı: 140";
+            // 
+            // btnSil
+            // 
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.Location = new System.Drawing.Point(224, 212);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(32, 28);
+            this.btnSil.TabIndex = 4;
+            this.btnSil.Text = "Sil";
+            this.btnSil.UseVisualStyleBackColor = true;
             // 
             // NotEkleForm
             // 
@@ -148,8 +176,8 @@
             this.Name = "NotEkleForm";
             this.Text = "Not Ekle";
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.grpOnIzleme.ResumeLayout(false);
+            this.grpOnIzleme.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,10 +190,11 @@
         private System.Windows.Forms.TextBox txtAciklama;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtAciklamaOnIzleme;
-        private System.Windows.Forms.TextBox txtOlusturulmaZamaniOnIzleme;
-        private System.Windows.Forms.TextBox txtKategoriOnIzleme;
+        public System.Windows.Forms.Panel grpOnIzleme;
+        public System.Windows.Forms.TextBox txtAciklamaOnIzleme;
+        public System.Windows.Forms.TextBox txtOlusturulmaZamaniOnIzleme;
+        public System.Windows.Forms.TextBox txtKategoriOnIzleme;
         private System.Windows.Forms.Label lblKarakterSayisi;
+        public System.Windows.Forms.Button btnSil;
     }
 }
