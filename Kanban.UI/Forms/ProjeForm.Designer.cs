@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.msProjeForm = new System.Windows.Forms.MenuStrip();
             this.tsmiNotEkle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProjeSil = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,11 +42,17 @@
             this.pnlToDoName = new System.Windows.Forms.Panel();
             this.pnlDoingName = new System.Windows.Forms.Panel();
             this.pnlDoneName = new System.Windows.Forms.Panel();
+            this.cms = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiKopyala = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiKopyalaToDo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiKopyalaDoing = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiKopyalaDone = new System.Windows.Forms.ToolStripMenuItem();
             this.msProjeForm.SuspendLayout();
             this.tlpBoard.SuspendLayout();
             this.pnlToDoName.SuspendLayout();
             this.pnlDoingName.SuspendLayout();
             this.pnlDoneName.SuspendLayout();
+            this.cms.SuspendLayout();
             this.SuspendLayout();
             // 
             // msProjeForm
@@ -205,6 +212,44 @@
             this.pnlDoneName.Size = new System.Drawing.Size(308, 64);
             this.pnlDoneName.TabIndex = 8;
             // 
+            // cms
+            // 
+            this.cms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiKopyala});
+            this.cms.Name = "cms";
+            this.cms.Size = new System.Drawing.Size(117, 26);
+            // 
+            // tsmiKopyala
+            // 
+            this.tsmiKopyala.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiKopyalaToDo,
+            this.tsmiKopyalaDoing,
+            this.tsmiKopyalaDone});
+            this.tsmiKopyala.Name = "tsmiKopyala";
+            this.tsmiKopyala.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKopyala.Text = "Kopyala";
+            // 
+            // tsmiKopyalaToDo
+            // 
+            this.tsmiKopyalaToDo.Name = "tsmiKopyalaToDo";
+            this.tsmiKopyalaToDo.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKopyalaToDo.Text = "ToDo\'ya Kopyala";
+            this.tsmiKopyalaToDo.Click += new System.EventHandler(this.tsmiKopyalaToDo_Click);
+            // 
+            // tsmiKopyalaDoing
+            // 
+            this.tsmiKopyalaDoing.Name = "tsmiKopyalaDoing";
+            this.tsmiKopyalaDoing.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKopyalaDoing.Text = "Doing\'e Kopyala";
+            this.tsmiKopyalaDoing.Click += new System.EventHandler(this.tsmiKopyalaDoing_Click);
+            // 
+            // tsmiKopyalaDone
+            // 
+            this.tsmiKopyalaDone.Name = "tsmiKopyalaDone";
+            this.tsmiKopyalaDone.Size = new System.Drawing.Size(180, 22);
+            this.tsmiKopyalaDone.Text = "Done\'a Kopyala";
+            this.tsmiKopyalaDone.Click += new System.EventHandler(this.tsmiKopyalaDone_Click);
+            // 
             // ProjeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -227,6 +272,7 @@
             this.pnlDoingName.PerformLayout();
             this.pnlDoneName.ResumeLayout(false);
             this.pnlDoneName.PerformLayout();
+            this.cms.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +293,10 @@
         private System.Windows.Forms.Panel pnlDoneName;
         private System.Windows.Forms.Panel pnlDoingName;
         private System.Windows.Forms.Panel pnlToDoName;
+        private System.Windows.Forms.ContextMenuStrip cms;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKopyala;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKopyalaToDo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKopyalaDoing;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKopyalaDone;
     }
 }

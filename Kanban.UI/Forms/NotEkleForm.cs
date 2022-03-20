@@ -15,6 +15,7 @@ namespace Kanban.UI.Forms
     {
         private readonly KanbanProje _kanbanProje;
         private readonly KanbanVeri _kanbanVeri;
+        OnIzlemeForm onIzlemeForm = new OnIzlemeForm();
 
         public NotEkleForm(KanbanProje kanbanProje, KanbanVeri kanbanVeri)
         {
@@ -23,7 +24,7 @@ namespace Kanban.UI.Forms
             _kanbanVeri = kanbanVeri;
             KategorileriDoldur();
             lblKarakterSayisi.BackColor = Color.LightGreen;
-            txtOlusturulmaZamaniOnIzleme.Text = DateTime.Now.ToShortDateString() + " - " + DateTime.Now.ToShortTimeString();
+            onIzlemeForm.txtOlusturulmaZamaniOnIzleme.Text = DateTime.Now.ToShortDateString() + " - " + DateTime.Now.ToShortTimeString();
         }
         private void KategorileriDoldur()
         {
@@ -34,8 +35,8 @@ namespace Kanban.UI.Forms
         private void cboKategori_SelectedIndexChanged(object sender, EventArgs e)
         {
             Kategori seciliKategori = (Kategori)cboKategori.SelectedItem;
-            pnlOnIzleme.BackColor = seciliKategori.Renk;
-            txtKategoriOnIzleme.Text = seciliKategori.Ad;
+            onIzlemeForm.pnlOnIzleme.BackColor = seciliKategori.Renk;
+            onIzlemeForm.txtKategoriOnIzleme.Text = seciliKategori.Ad;
         }
 
         private void txtAciklama_TextChanged(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace Kanban.UI.Forms
                 lblKarakterSayisi.BackColor = Color.Red;
             }
             lblKarakterSayisi.Text = "Karakter Sayısı: " + (140 - karakterSayisi).ToString();
-            txtAciklamaOnIzleme.Text = txtAciklama.Text;
+            onIzlemeForm.txtAciklamaOnIzleme.Text = txtAciklama.Text;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -70,6 +71,11 @@ namespace Kanban.UI.Forms
                 MessageBox.Show("Lütfen Bir Açıklama Giriniz..!");
                 return;
             }
+        }
+
+        private void lblOnIzleme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            onIzlemeForm.ShowDialog();
         }
     }
 }

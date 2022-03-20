@@ -1,1 +1,27 @@
-{"Projeler":[{"Id":"2ad24f99-4c7b-439b-a00a-606f95ba3dc1","Ad":"Deneme - 1","OlusturulmaZamani":"2022-03-20T12:49:03.9844943+03:00","Notlar":[]}],"Kategoriler":[{"Id":"50bc9f81-6f78-478a-9ed0-16386cb9e7c6","Ad":"deneme","Renk":"Aqua"},{"Id":"a2cff2c6-4b44-41a3-9a98-39a4a27fcf8b","Ad":"deneme1","Renk":"255, 255, 128"},{"Id":"e70dfeb2-86eb-4644-a2d3-1780b536e2df","Ad":"deneme2","Renk":"Lime"}]}
+{
+  "Projeler": [
+    {
+      "Id": "f230ed66-6426-4e6c-94ae-ccdbe19ec355",
+      "Ad": "asd",
+      "OlusturulmaZamani": "2022-03-20T16:14:02.7606326+03:00",
+      "Notlar": []
+    }
+  ],
+  "Kategoriler": [
+    {
+      "Id": "50bc9f81-6f78-478a-9ed0-16386cb9e7c6",
+      "Ad": "deneme",
+      "Renk": "Aqua"
+    },
+    {
+      "Id": "a2cff2c6-4b44-41a3-9a98-39a4a27fcf8b",
+      "Ad": "deneme1",
+      "Renk": "255, 255, 128"
+    },
+    {
+      "Id": "e70dfeb2-86eb-4644-a2d3-1780b536e2df",
+      "Ad": "deneme2",
+      "Renk": "Lime"
+    }
+  ]
+}

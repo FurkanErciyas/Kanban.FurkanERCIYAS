@@ -52,7 +52,7 @@ namespace Kanban.UI.Forms
 
             for (int i = 0; i < toDoNot.Count; i++)
             {
-                NotEkleForm notGoster = new NotEkleForm(_kanbanProje, _kanbanVeri);
+                OnIzlemeForm notGoster = new OnIzlemeForm();
                 pnlToDo.Controls.Add(notGoster.pnlOnIzleme);
                 notGoster.pnlOnIzleme.BackColor = toDoNot[i].Kategori.Renk;
                 notGoster.pnlOnIzleme.Top = (i * notGoster.pnlOnIzleme.Height) + 10;
@@ -75,7 +75,7 @@ namespace Kanban.UI.Forms
 
             for (int i = 0; i < doingNot.Count; i++)
             {
-                NotEkleForm notGoster = new NotEkleForm(_kanbanProje, _kanbanVeri);
+                OnIzlemeForm notGoster = new OnIzlemeForm();
                 pnlDoing.Controls.Add(notGoster.pnlOnIzleme);
                 notGoster.pnlOnIzleme.BackColor = doingNot[i].Kategori.Renk;
                 notGoster.pnlOnIzleme.Top = (i * notGoster.pnlOnIzleme.Height) + 10;
@@ -99,7 +99,7 @@ namespace Kanban.UI.Forms
 
             for (int i = 0; i < doneNot.Count; i++)
             {
-                NotEkleForm notGoster = new NotEkleForm(_kanbanProje, _kanbanVeri);
+                OnIzlemeForm notGoster = new OnIzlemeForm();
                 pnlDone.Controls.Add(notGoster.pnlOnIzleme);
                 notGoster.pnlOnIzleme.BackColor = doneNot[i].Kategori.Renk;
                 notGoster.pnlOnIzleme.Top = (i * notGoster.pnlOnIzleme.Height) + 10;
@@ -126,6 +126,11 @@ namespace Kanban.UI.Forms
             if (e.Button == MouseButtons.Left && sender is Panel)
             {
                 ((Panel)sender).DoDragDrop((Panel)sender, DragDropEffects.Move);
+            }
+            if(e.Button == MouseButtons.Right && sender is Panel)
+            {
+                cms.Show((Panel)sender, new Point(e.X, e.Y));
+                cms.Tag = ((Panel)sender).Tag;
             }
         }
 
@@ -185,7 +190,6 @@ namespace Kanban.UI.Forms
             PanelleriListele();
         }
 
-
         private void pnlDone_DragDrop(object sender, DragEventArgs e)
         {
             Panel panel = (Panel)e.Data.GetData(typeof(Panel));
@@ -218,11 +222,54 @@ namespace Kanban.UI.Forms
         {
             e.Effect = DragDropEffects.Move;
         }
+
         private void PanelleriListele()
         {
             ToDoListele();
             DoingListele();
             DoneListele();
+        }
+
+        private void tsmiKopyalaToDo_Click(object sender, EventArgs e)
+        {
+            Guid kopyalanacakId = (Guid)cms.Tag;
+            Not kopyalanacakNot = _kanbanProje.Notlar.FirstOrDefault(x => x.Id == kopyalanacakId);
+            _kanbanProje.Notlar.Add(new Not()
+            {
+                Aciklama = kopyalanacakNot.Aciklama,
+                DurumEnum = DurumEnum.ToDo,
+                Kategori = kopyalanacakNot.Kategori,
+                OlusturulmaZamani = kopyalanacakNot.OlusturulmaZamani
+            });
+            PanelleriListele();
+        }
+
+        private void tsmiKopyalaDoing_Click(object sender, EventArgs e)
+        {
+            Guid kopyalanacakId = (Guid)cms.Tag;
+            Not kopyalanacakNot = _kanbanProje.Notlar.FirstOrDefault(x => x.Id == kopyalanacakId);
+            _kanbanProje.Notlar.Add(new Not()
+            {
+                Aciklama = kopyalanacakNot.Aciklama,
+                DurumEnum = DurumEnum.Doing,
+                Kategori = kopyalanacakNot.Kategori,
+                OlusturulmaZamani = kopyalanacakNot.OlusturulmaZamani
+            });
+            PanelleriListele();
+        }
+
+        private void tsmiKopyalaDone_Click(object sender, EventArgs e)
+        {
+            Guid kopyalanacakId = (Guid)cms.Tag;
+            Not kopyalanacakNot = _kanbanProje.Notlar.FirstOrDefault(x => x.Id == kopyalanacakId);
+            _kanbanProje.Notlar.Add(new Not()
+            {
+                Aciklama = kopyalanacakNot.Aciklama,
+                DurumEnum = DurumEnum.Done,
+                Kategori = kopyalanacakNot.Kategori,
+                OlusturulmaZamani = kopyalanacakNot.OlusturulmaZamani
+            });
+            PanelleriListele();
         }
     }
 }

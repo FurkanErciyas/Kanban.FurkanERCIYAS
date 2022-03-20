@@ -44,6 +44,10 @@
 
     ![](./KanbanOrnekTasarim\NotEkleForm.png)
 
+- [X] OnIzlemeForm
+
+    ![](./KanbanOrnekTasarim\OnIzlemeForm.png)
+
 ### ADIM ADIM
 
 ##### KategoriForm
@@ -75,6 +79,6 @@
 - [X] Doing Enumýna kayýtlý olan notlarýn Doing panelinde gösterilmesi.
 - [X] Done Enumýna kayýtlý olan notlarýn Done panelinde gösterilmesi.
 - [X] ToDo, Doing, Done panelleri arasýnda notlarýn sürükle býrak methodu ile taþýnmasý.
-
+- [X] ProjeForm üzerinden paneller arasý not kopyalama iþlemi.
 
 
