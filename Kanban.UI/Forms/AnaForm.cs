@@ -29,6 +29,7 @@ namespace Kanban.UI.Forms
                 kanbanVeri = new KanbanVeri();
             }
             ProjeleriListele();
+            ProjeAdlariniDoldur();
         }
 
         private void tsmiKategoriEkle_Click(object sender, EventArgs e)
@@ -57,20 +58,12 @@ namespace Kanban.UI.Forms
                 projeForm.Show();
             }
             ProjeleriListele();
-        }
-
-        private void tsmiProjeler_Click(object sender, EventArgs e)
-        {
-            ProjeleriListele();
+            ProjeAdlariniDoldur();
         }
 
         public void ProjeleriListele()
         {
-            foreach (var item in this.MdiChildren)
-            {
-                item.Dispose();
-                item.Close();
-            }
+            AnaFormTemizle();
             foreach (var item in kanbanVeri.Projeler)
             {
                 ProjeForm projeForm = new ProjeForm(item, kanbanVeri);
@@ -80,11 +73,59 @@ namespace Kanban.UI.Forms
             }
             LayoutMdi(MdiLayout.TileVertical);
         }
-
         private void ProjeForm_ProjeSilindiginde(KanbanProje kanbanProje)
         {
             kanbanVeri.Projeler.Remove(kanbanProje);
             ProjeleriListele();
+            ProjeAdlariniDoldur();
+        }
+
+        private void ProjeAdlariniDoldur()
+        {
+            tscboProjeler.Items.Clear();
+            tscboProjeler.Items.Add("");
+            tscboProjeler.Items.Add("Hepsi");
+            foreach (KanbanProje item in kanbanVeri.Projeler)
+            {
+                tscboProjeler.Items.Add(item);
+            }
+        }
+        private void tscboProjeler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tscboProjeler.SelectedIndex == 0)
+            {
+                AnaFormTemizle();
+            }
+            else if (tscboProjeler.SelectedIndex == 1)
+            {
+                ProjeleriListele();
+            }
+            else
+            {
+                AnaFormTemizle();
+                KanbanProje cboSeciliProje = (KanbanProje)tscboProjeler.SelectedItem;
+                Guid cboSeciliProjeId = cboSeciliProje.Id;
+                KanbanProje kanbanProje = new KanbanProje()
+                {
+                    Id = cboSeciliProje.Id,
+                    Ad = cboSeciliProje.Ad,
+                    Notlar = cboSeciliProje.Notlar,
+                    OlusturulmaZamani = cboSeciliProje.OlusturulmaZamani
+                };
+                ProjeForm projeForm = new ProjeForm(kanbanProje, kanbanVeri);
+                projeForm.MdiParent = this;
+                projeForm.Show();
+                LayoutMdi(MdiLayout.TileVertical);
+            }
+        }
+
+        private void AnaFormTemizle()
+        {
+            foreach (var item in this.MdiChildren)
+            {
+                item.Dispose();
+                item.Close();
+            }
         }
     }
 }

@@ -18,5 +18,9 @@ namespace Kanban.DATA.Models
         public string Ad { get; set; }
         public DateTime OlusturulmaZamani { get; set; }
         public List<Not> Notlar { get; set; }
+        public override string ToString()
+        {
+            return Ad;
+        }
     }
 }

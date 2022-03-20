@@ -90,7 +90,6 @@ namespace Kanban.UI.Forms
             }
         }
 
-
         public void DoneListele()
         {
             pnlDone.Controls.Clear();

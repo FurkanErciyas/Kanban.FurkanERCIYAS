@@ -30,8 +30,8 @@
         {
             this.msAnaForm = new System.Windows.Forms.MenuStrip();
             this.tsmiProjeEkle = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProjeler = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiKategoriEkle = new System.Windows.Forms.ToolStripMenuItem();
+            this.tscboProjeler = new System.Windows.Forms.ToolStripComboBox();
             this.msAnaForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,35 +40,36 @@
             this.msAnaForm.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.msAnaForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiProjeEkle,
-            this.tsmiProjeler,
-            this.tsmiKategoriEkle});
+            this.tsmiKategoriEkle,
+            this.tscboProjeler});
             this.msAnaForm.Location = new System.Drawing.Point(0, 0);
             this.msAnaForm.Name = "msAnaForm";
             this.msAnaForm.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
-            this.msAnaForm.Size = new System.Drawing.Size(784, 33);
+            this.msAnaForm.Size = new System.Drawing.Size(784, 37);
             this.msAnaForm.TabIndex = 1;
             this.msAnaForm.Text = "menuStrip1";
             // 
             // tsmiProjeEkle
             // 
             this.tsmiProjeEkle.Name = "tsmiProjeEkle";
-            this.tsmiProjeEkle.Size = new System.Drawing.Size(90, 25);
+            this.tsmiProjeEkle.Size = new System.Drawing.Size(90, 29);
             this.tsmiProjeEkle.Text = "Proje Ekle";
             this.tsmiProjeEkle.Click += new System.EventHandler(this.tsmiProjeEkle_Click);
-            // 
-            // tsmiProjeler
-            // 
-            this.tsmiProjeler.Name = "tsmiProjeler";
-            this.tsmiProjeler.Size = new System.Drawing.Size(76, 25);
-            this.tsmiProjeler.Text = "Projeler";
-            this.tsmiProjeler.Click += new System.EventHandler(this.tsmiProjeler_Click);
             // 
             // tsmiKategoriEkle
             // 
             this.tsmiKategoriEkle.Name = "tsmiKategoriEkle";
-            this.tsmiKategoriEkle.Size = new System.Drawing.Size(112, 25);
+            this.tsmiKategoriEkle.Size = new System.Drawing.Size(112, 29);
             this.tsmiKategoriEkle.Text = "Kategori Ekle";
             this.tsmiKategoriEkle.Click += new System.EventHandler(this.tsmiKategoriEkle_Click);
+            // 
+            // tscboProjeler
+            // 
+            this.tscboProjeler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscboProjeler.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tscboProjeler.Name = "tscboProjeler";
+            this.tscboProjeler.Size = new System.Drawing.Size(225, 29);
+            this.tscboProjeler.SelectedIndexChanged += new System.EventHandler(this.tscboProjeler_SelectedIndexChanged);
             // 
             // AnaForm
             // 
@@ -96,7 +97,7 @@
 
         private System.Windows.Forms.MenuStrip msAnaForm;
         private System.Windows.Forms.ToolStripMenuItem tsmiProjeEkle;
-        private System.Windows.Forms.ToolStripMenuItem tsmiProjeler;
         private System.Windows.Forms.ToolStripMenuItem tsmiKategoriEkle;
+        private System.Windows.Forms.ToolStripComboBox tscboProjeler;
     }
 }
