@@ -34,7 +34,7 @@ namespace Kanban.UI.Forms
         private void cboKategori_SelectedIndexChanged(object sender, EventArgs e)
         {
             Kategori seciliKategori = (Kategori)cboKategori.SelectedItem;
-            grpOnIzleme.BackColor = seciliKategori.Renk;
+            pnlOnIzleme.BackColor = seciliKategori.Renk;
             txtKategoriOnIzleme.Text = seciliKategori.Ad;
         }
 

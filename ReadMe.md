@@ -56,11 +56,9 @@
 ##### ProjeEkleForm
 - [X] AnaForm üzerinden 'Proje Ekle' týklandýðý zaman ProjeEkleForm açýlmasý.
 - [X] ProjeEkleForm üzerinden 'Ekle' butonuna týklanýldýðý zaman Projenin Kaydedilmesi.
-
-##### ProjeForm
-- [X] ProjeForm üzerinden (ToDo, Doing, Done) panelerinin pencere büyüklüðüne göre ayarý. (TableLayoutPanel kullanýldý)
-- [X] ProjeForm üzerinden Proje Sil týklanýldýðý zaman kayýtlý verilerden projenin silinmesi.
-- [X] ProjeForm'da Not Ekle týklanýldýðý zaman NotEkleForm'un açýlmasý.
+ 
+##### AnaForm
+- [X] AnaForm'da Projelere týklandýðý zaman kayýtlý projelerin açýlmasý. (MdiLayout TileVertical)
 
 ##### NotEkleForm
 - [X] Kategoriler listesinden kayýtlý kategorilerin combobox'ta listelenmesi.
@@ -68,8 +66,15 @@
 - [X] Açýklama max 140 karakter ayarlanmasý.
 - [X] Açýklama yazýldýðýnda ön izlemede gösterilmesi. (anlýk)
 - [X] Oluþturulan notun tarih ve saatinin ön izlemede gösterilmesi.
-- [ ] Ekle butonuna týlanýldýðý zaman ön izlemede bulunan notun görsel olarak ilgili projenin ToDo paneline aktarýlmasý.
 
-##### AnaForm
-- [X] AnaForm'da Projelere týklandýðý zaman kayýtlý projelerin açýlmasý. (MdiLayout TileVertical)
+##### ProjeForm
+- [X] ProjeForm üzerinden (ToDo, Doing, Done) panelerinin pencere büyüklüðüne göre ayarý. (TableLayoutPanel kullanýldý)
+- [X] ProjeForm üzerinden Proje Sil týklanýldýðý zaman kayýtlý verilerden projenin silinmesi.
+- [X] ProjeForm'da Not Ekle týklanýldýðý zaman NotEkleForm'un açýlmasý.
+- [X] Ekle butonuna týlanýldýðý zaman ön izlemede bulunan notun görsel olarak ilgili projenin ToDo paneline aktarýlmasý. Ön izleme tasarýmýnda ihtiyaç duyulan nesneler public yapýlarak kullanýldý.
+- [X] Doing Enumýna kayýtlý olan notlarýn Doing panelinde gösterilmesi.
+- [X] Done Enumýna kayýtlý olan notlarýn Done panelinde gösterilmesi.
+- [X] ToDo, Doing, Done panelleri arasýnda notlarýn sürükle býrak methodu ile taþýnmasý.
+
+
 

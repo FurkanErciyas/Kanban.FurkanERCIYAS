@@ -32,17 +32,20 @@
             this.tsmiNotEkle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProjeSil = new System.Windows.Forms.ToolStripMenuItem();
             this.tlpBoard = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlToDo = new System.Windows.Forms.Panel();
-            this.lblToDo = new System.Windows.Forms.Label();
             this.pnlDone = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlDoing = new System.Windows.Forms.Panel();
             this.lblDoing = new System.Windows.Forms.Label();
+            this.lblToDo = new System.Windows.Forms.Label();
+            this.pnlToDo = new System.Windows.Forms.Panel();
+            this.pnlToDoName = new System.Windows.Forms.Panel();
+            this.pnlDoingName = new System.Windows.Forms.Panel();
+            this.pnlDoneName = new System.Windows.Forms.Panel();
             this.msProjeForm.SuspendLayout();
             this.tlpBoard.SuspendLayout();
-            this.pnlToDo.SuspendLayout();
-            this.pnlDone.SuspendLayout();
-            this.pnlDoing.SuspendLayout();
+            this.pnlToDoName.SuspendLayout();
+            this.pnlDoingName.SuspendLayout();
+            this.pnlDoneName.SuspendLayout();
             this.SuspendLayout();
             // 
             // msProjeForm
@@ -73,58 +76,38 @@
             // 
             // tlpBoard
             // 
-            this.tlpBoard.BackColor = System.Drawing.Color.White;
+            this.tlpBoard.BackColor = System.Drawing.Color.DarkGray;
             this.tlpBoard.ColumnCount = 3;
             this.tlpBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlpBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             this.tlpBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tlpBoard.Controls.Add(this.pnlToDo, 0, 0);
-            this.tlpBoard.Controls.Add(this.pnlDone, 2, 0);
-            this.tlpBoard.Controls.Add(this.pnlDoing, 1, 0);
+            this.tlpBoard.Controls.Add(this.pnlDoneName, 2, 0);
+            this.tlpBoard.Controls.Add(this.pnlDoingName, 1, 0);
+            this.tlpBoard.Controls.Add(this.pnlDone, 2, 1);
+            this.tlpBoard.Controls.Add(this.pnlDoing, 1, 1);
+            this.tlpBoard.Controls.Add(this.pnlToDo, 0, 1);
+            this.tlpBoard.Controls.Add(this.pnlToDoName, 0, 0);
             this.tlpBoard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpBoard.Location = new System.Drawing.Point(0, 29);
             this.tlpBoard.Name = "tlpBoard";
             this.tlpBoard.RowCount = 2;
+            this.tlpBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tlpBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpBoard.Size = new System.Drawing.Size(940, 400);
             this.tlpBoard.TabIndex = 1;
             // 
-            // pnlToDo
-            // 
-            this.pnlToDo.AutoScroll = true;
-            this.pnlToDo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlToDo.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlToDo.Controls.Add(this.lblToDo);
-            this.pnlToDo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlToDo.Location = new System.Drawing.Point(3, 3);
-            this.pnlToDo.Name = "pnlToDo";
-            this.pnlToDo.Size = new System.Drawing.Size(307, 374);
-            this.pnlToDo.TabIndex = 5;
-            // 
-            // lblToDo
-            // 
-            this.lblToDo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblToDo.AutoSize = true;
-            this.lblToDo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblToDo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblToDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblToDo.Location = new System.Drawing.Point(112, 20);
-            this.lblToDo.Name = "lblToDo";
-            this.lblToDo.Size = new System.Drawing.Size(83, 33);
-            this.lblToDo.TabIndex = 2;
-            this.lblToDo.Text = "ToDo";
-            // 
             // pnlDone
             // 
+            this.pnlDone.AllowDrop = true;
             this.pnlDone.AutoScroll = true;
             this.pnlDone.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlDone.Controls.Add(this.label2);
             this.pnlDone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDone.Location = new System.Drawing.Point(629, 3);
+            this.pnlDone.Location = new System.Drawing.Point(629, 73);
             this.pnlDone.Name = "pnlDone";
-            this.pnlDone.Size = new System.Drawing.Size(308, 374);
+            this.pnlDone.Size = new System.Drawing.Size(308, 324);
             this.pnlDone.TabIndex = 1;
+            this.pnlDone.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlDone_DragDrop);
+            this.pnlDone.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnlToDo_DragEnter);
             // 
             // label2
             // 
@@ -133,7 +116,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(114, 20);
+            this.label2.Location = new System.Drawing.Point(113, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 33);
             this.label2.TabIndex = 3;
@@ -141,14 +124,16 @@
             // 
             // pnlDoing
             // 
+            this.pnlDoing.AllowDrop = true;
             this.pnlDoing.AutoScroll = true;
             this.pnlDoing.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlDoing.Controls.Add(this.lblDoing);
             this.pnlDoing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDoing.Location = new System.Drawing.Point(316, 3);
+            this.pnlDoing.Location = new System.Drawing.Point(316, 73);
             this.pnlDoing.Name = "pnlDoing";
-            this.pnlDoing.Size = new System.Drawing.Size(307, 374);
+            this.pnlDoing.Size = new System.Drawing.Size(307, 324);
             this.pnlDoing.TabIndex = 1;
+            this.pnlDoing.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlDoing_DragDrop);
+            this.pnlDoing.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnlToDo_DragEnter);
             // 
             // lblDoing
             // 
@@ -157,11 +142,68 @@
             this.lblDoing.BackColor = System.Drawing.Color.White;
             this.lblDoing.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDoing.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDoing.Location = new System.Drawing.Point(110, 20);
+            this.lblDoing.Location = new System.Drawing.Point(110, 15);
             this.lblDoing.Name = "lblDoing";
             this.lblDoing.Size = new System.Drawing.Size(87, 33);
             this.lblDoing.TabIndex = 4;
             this.lblDoing.Text = "Doing";
+            // 
+            // lblToDo
+            // 
+            this.lblToDo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblToDo.AutoSize = true;
+            this.lblToDo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblToDo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblToDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblToDo.Location = new System.Drawing.Point(112, 15);
+            this.lblToDo.Name = "lblToDo";
+            this.lblToDo.Size = new System.Drawing.Size(83, 33);
+            this.lblToDo.TabIndex = 2;
+            this.lblToDo.Text = "ToDo";
+            // 
+            // pnlToDo
+            // 
+            this.pnlToDo.AllowDrop = true;
+            this.pnlToDo.AutoScroll = true;
+            this.pnlToDo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlToDo.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlToDo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlToDo.Location = new System.Drawing.Point(3, 73);
+            this.pnlToDo.Name = "pnlToDo";
+            this.pnlToDo.Size = new System.Drawing.Size(307, 324);
+            this.pnlToDo.TabIndex = 5;
+            this.pnlToDo.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlToDo_DragDrop);
+            this.pnlToDo.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnlToDo_DragEnter);
+            // 
+            // pnlToDoName
+            // 
+            this.pnlToDoName.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlToDoName.Controls.Add(this.lblToDo);
+            this.pnlToDoName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlToDoName.Location = new System.Drawing.Point(3, 3);
+            this.pnlToDoName.Name = "pnlToDoName";
+            this.pnlToDoName.Size = new System.Drawing.Size(307, 64);
+            this.pnlToDoName.TabIndex = 6;
+            // 
+            // pnlDoingName
+            // 
+            this.pnlDoingName.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlDoingName.Controls.Add(this.lblDoing);
+            this.pnlDoingName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDoingName.Location = new System.Drawing.Point(316, 3);
+            this.pnlDoingName.Name = "pnlDoingName";
+            this.pnlDoingName.Size = new System.Drawing.Size(307, 64);
+            this.pnlDoingName.TabIndex = 7;
+            // 
+            // pnlDoneName
+            // 
+            this.pnlDoneName.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlDoneName.Controls.Add(this.label2);
+            this.pnlDoneName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDoneName.Location = new System.Drawing.Point(629, 3);
+            this.pnlDoneName.Name = "pnlDoneName";
+            this.pnlDoneName.Size = new System.Drawing.Size(308, 64);
+            this.pnlDoneName.TabIndex = 8;
             // 
             // ProjeForm
             // 
@@ -179,12 +221,12 @@
             this.msProjeForm.ResumeLayout(false);
             this.msProjeForm.PerformLayout();
             this.tlpBoard.ResumeLayout(false);
-            this.pnlToDo.ResumeLayout(false);
-            this.pnlToDo.PerformLayout();
-            this.pnlDone.ResumeLayout(false);
-            this.pnlDone.PerformLayout();
-            this.pnlDoing.ResumeLayout(false);
-            this.pnlDoing.PerformLayout();
+            this.pnlToDoName.ResumeLayout(false);
+            this.pnlToDoName.PerformLayout();
+            this.pnlDoingName.ResumeLayout(false);
+            this.pnlDoingName.PerformLayout();
+            this.pnlDoneName.ResumeLayout(false);
+            this.pnlDoneName.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +244,8 @@
         private System.Windows.Forms.Label lblDoing;
         private System.Windows.Forms.Panel pnlToDo;
         private System.Windows.Forms.Label lblToDo;
+        private System.Windows.Forms.Panel pnlDoneName;
+        private System.Windows.Forms.Panel pnlDoingName;
+        private System.Windows.Forms.Panel pnlToDoName;
     }
 }
