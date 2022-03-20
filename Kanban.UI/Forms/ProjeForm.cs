@@ -112,6 +112,7 @@ namespace Kanban.UI.Forms
                 notGoster.pnlOnIzleme.Tag = doneNot[i].Id;
             }
         }
+
         private void BtnSil_Click(object sender, EventArgs e)
         {
             Button tıklananButon = (Button)sender;
@@ -120,6 +121,7 @@ namespace Kanban.UI.Forms
             _kanbanProje.Notlar.Remove(silinecekNot);
             PanelleriListele();
         }
+
         private void PnlOnIzleme_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && sender is Panel)

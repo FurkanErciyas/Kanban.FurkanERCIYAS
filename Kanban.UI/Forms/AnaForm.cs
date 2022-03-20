@@ -73,6 +73,7 @@ namespace Kanban.UI.Forms
             }
             LayoutMdi(MdiLayout.TileVertical);
         }
+
         private void ProjeForm_ProjeSilindiginde(KanbanProje kanbanProje)
         {
             kanbanVeri.Projeler.Remove(kanbanProje);
@@ -90,7 +91,8 @@ namespace Kanban.UI.Forms
                 tscboProjeler.Items.Add(item);
             }
         }
-        private void tscboProjeler_SelectedIndexChanged(object sender, EventArgs e)
+
+        public void tscboProjeler_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tscboProjeler.SelectedIndex == 0)
             {
@@ -104,15 +106,14 @@ namespace Kanban.UI.Forms
             {
                 AnaFormTemizle();
                 KanbanProje cboSeciliProje = (KanbanProje)tscboProjeler.SelectedItem;
-                Guid cboSeciliProjeId = cboSeciliProje.Id;
-                KanbanProje kanbanProje = new KanbanProje()
+                KanbanProje gosterilecekProje = new KanbanProje()
                 {
                     Id = cboSeciliProje.Id,
                     Ad = cboSeciliProje.Ad,
                     Notlar = cboSeciliProje.Notlar,
                     OlusturulmaZamani = cboSeciliProje.OlusturulmaZamani
                 };
-                ProjeForm projeForm = new ProjeForm(kanbanProje, kanbanVeri);
+                ProjeForm projeForm = new ProjeForm(gosterilecekProje, kanbanVeri);
                 projeForm.MdiParent = this;
                 projeForm.Show();
                 LayoutMdi(MdiLayout.TileVertical);
