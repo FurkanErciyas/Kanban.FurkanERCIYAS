@@ -31,7 +31,7 @@
             this.msAnaForm = new System.Windows.Forms.MenuStrip();
             this.tsmiProjeEkle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiKategoriEkle = new System.Windows.Forms.ToolStripMenuItem();
-            this.tscboProjeler = new System.Windows.Forms.ToolStripComboBox();
+            this.mscboProjeler = new System.Windows.Forms.ToolStripComboBox();
             this.msAnaForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +41,7 @@
             this.msAnaForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiProjeEkle,
             this.tsmiKategoriEkle,
-            this.tscboProjeler});
+            this.mscboProjeler});
             this.msAnaForm.Location = new System.Drawing.Point(0, 0);
             this.msAnaForm.Name = "msAnaForm";
             this.msAnaForm.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
@@ -63,13 +63,13 @@
             this.tsmiKategoriEkle.Text = "Kategori Ekle";
             this.tsmiKategoriEkle.Click += new System.EventHandler(this.tsmiKategoriEkle_Click);
             // 
-            // tscboProjeler
+            // mscboProjeler
             // 
-            this.tscboProjeler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscboProjeler.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.tscboProjeler.Name = "tscboProjeler";
-            this.tscboProjeler.Size = new System.Drawing.Size(225, 29);
-            this.tscboProjeler.SelectedIndexChanged += new System.EventHandler(this.tscboProjeler_SelectedIndexChanged);
+            this.mscboProjeler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mscboProjeler.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mscboProjeler.Name = "mscboProjeler";
+            this.mscboProjeler.Size = new System.Drawing.Size(225, 29);
+            this.mscboProjeler.SelectedIndexChanged += new System.EventHandler(this.tscboProjeler_SelectedIndexChanged);
             // 
             // AnaForm
             // 
@@ -98,6 +98,6 @@
         private System.Windows.Forms.MenuStrip msAnaForm;
         private System.Windows.Forms.ToolStripMenuItem tsmiProjeEkle;
         private System.Windows.Forms.ToolStripMenuItem tsmiKategoriEkle;
-        private System.Windows.Forms.ToolStripComboBox tscboProjeler;
+        private System.Windows.Forms.ToolStripComboBox mscboProjeler;
     }
 }

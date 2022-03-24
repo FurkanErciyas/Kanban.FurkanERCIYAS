@@ -147,7 +147,7 @@ namespace Kanban.UI.Forms
             else
             {
                 Panel sonPanel = (Panel)pnlToDo.Controls[pnlToDo.Controls.Count - 1];
-                panel.Top = sonPanel.Bottom;
+                panel.Top = sonPanel.Bottom + 10;
             }
 
             if (not.DurumEnum == DurumEnum.Doing)
@@ -175,7 +175,7 @@ namespace Kanban.UI.Forms
             else
             {
                 Panel sonPanel = (Panel)pnlDoing.Controls[pnlDoing.Controls.Count - 1];
-                panel.Top = sonPanel.Bottom;
+                panel.Top = sonPanel.Bottom + 10;
             }
 
             if (not.DurumEnum == DurumEnum.ToDo)
@@ -203,7 +203,7 @@ namespace Kanban.UI.Forms
             else
             {
                 Panel sonPanel = (Panel)pnlDone.Controls[pnlDone.Controls.Count - 1];
-                panel.Top = sonPanel.Bottom;
+                panel.Top = sonPanel.Bottom + 10;
             }
 
             if (not.DurumEnum == DurumEnum.ToDo)
